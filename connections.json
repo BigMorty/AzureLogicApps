@@ -1,0 +1,29 @@
+{
+  "serviceProviderConnections": {
+    "eventHub": {
+      "parameterValues": {
+        "connectionString": "@appsetting('eventHub-connectionString')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/eventHub"
+      },
+      "displayName": "EventHub1"
+    }
+  },
+  "managedApiConnections": {
+    "twilio": {
+      "api": {
+        "id": "/subscriptions/79b46d77-c8e3-48d7-acf0-b96fd0798357/providers/Microsoft.Web/locations/westus2/managedApis/twilio"
+      },
+      "connection": {
+        "id": "/subscriptions/79b46d77-c8e3-48d7-acf0-b96fd0798357/resourceGroups/LogicApp1/providers/Microsoft.Web/connections/twilio"
+      },
+      "connectionRuntimeUrl": "https://fa68d446841c01ad.01.common.logic-westus2.azure-apihub.net/apim/twilio/1c5fcd233f5244429699d9beeeca2cd2/",
+      "authentication": {
+        "type": "Raw",
+        "scheme": "Key",
+        "parameter": "@appsetting('twilio-connectionKey')"
+      }
+    }
+  }
+}

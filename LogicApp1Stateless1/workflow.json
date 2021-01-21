@@ -1,0 +1,43 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Send_Text_Message_(SMS)": {
+                "type": "ApiConnection",
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "referenceName": "twilio"
+                        }
+                    },
+                    "method": "post",
+                    "body": {
+                        "from": "+19152232845",
+                        "to": "425-301-4298",
+                        "body": "Test from LogicApp1"
+                    },
+                    "path": "/Messages.json"
+                },
+                "runAfter": {}
+            }
+        },
+        "triggers": {
+            "When_events_are_available_in_Event_hub": {
+                "type": "ServiceProvider",
+                "inputs": {
+                    "parameters": {
+                        "eventHubName": "eventhub1"
+                    },
+                    "serviceProviderConfiguration": {
+                        "connectionName": "eventHub",
+                        "operationId": "receiveEvents",
+                        "serviceProviderId": "/serviceProviders/eventHub"
+                    }
+                }
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {}
+    },
+    "kind": "Stateless"
+}
